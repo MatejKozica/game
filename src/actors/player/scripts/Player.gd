@@ -23,8 +23,8 @@ func _state_machine() -> void:
 		IDLE:
 			#state
 			_velocity.x = 0; 
-			animation_state.travel("idle_down");
 			_direction = _get_direction();
+			animation_state.travel("idle");
 			
 			#checking for other states
 			if _direction != Vector2.ZERO:
@@ -33,22 +33,16 @@ func _state_machine() -> void:
 			#state
 			_direction = _get_direction();
 			_velocity = move(_velocity, _direction, move_speed);
-			animation_state.travel("walk_down");
+			animation_state.travel("walk");
 			#checking for other states
 			if _velocity == Vector2.ZERO:
 				state = IDLE;
-			
-
 
 func _get_direction() -> Vector2:
 	var direction = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
 							Input.get_action_strength("down") - Input.get_action_strength("up"));
-	if direction.x < 0:
-		_looking_direction.x = -1;
-		sprite.set_flip_h(true);
-	elif direction.x > 0:
-		_looking_direction.x = 1;
-		sprite.set_flip_h(false);
+	animation_tree.set("parameters/walk/blend_position", _direction);
+	animation_tree.set("parameters/idle/blend_position", _direction);
 	return direction;
 
 func move(velocity: Vector2, direction: Vector2, speed) -> Vector2:

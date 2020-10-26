@@ -22,7 +22,6 @@ _global_script_class_icons={
 
 config/name="game"
 run/main_scene="res://src/testScene.tscn"
-config/icon="res://icon.png"
 
 [input]
 
