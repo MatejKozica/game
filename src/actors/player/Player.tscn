@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/player/idle/Char_idle_down.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/player/scripts/Player.gd" type="Script" id=2]
@@ -9,13 +9,272 @@
 [ext_resource path="res://assets/player/walk/Char_walk_right.png" type="Texture" id=7]
 [ext_resource path="res://assets/player/walk/Char_walk_up.png" type="Texture" id=8]
 [ext_resource path="res://assets/player/walk/Char_walk_left.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/attack/sword/Char_atk_down.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/attack/sword/Char_atk_up.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/attack/sword/Char_atk_right.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/attack/sword/Char_atk_left.png" type="Texture" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.93626
 height = 7.71031
 
 [sub_resource type="Animation" id=2]
-resource_name = "idle_down"
+resource_name = "attack_sword_down"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ), Vector2( 3, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "setIdle"
+} ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "attack_sword_left"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "setIdle"
+} ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "attack_sword_right"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "setIdle"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "attack_sword_up"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "setIdle"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -55,7 +314,7 @@ tracks/2/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 resource_name = "idle_left"
 length = 0.5
 loop = true
@@ -96,8 +355,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle_right"
+[sub_resource type="Animation" id=5]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -137,7 +395,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=6]
 resource_name = "idle_up"
 length = 0.5
 loop = true
@@ -178,7 +436,7 @@ tracks/2/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -218,7 +476,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=8]
 resource_name = "walk_left"
 length = 0.5
 loop = true
@@ -259,7 +517,7 @@ tracks/2/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=9]
 resource_name = "walk_right"
 length = 0.5
 loop = true
@@ -300,7 +558,7 @@ tracks/2/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=10]
 resource_name = "walk_up"
 length = 0.5
 loop = true
@@ -341,70 +599,104 @@ tracks/2/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "idle_left"
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "attack_sword_left"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
-animation = "idle_right"
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "attack_sword_right"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
-animation = "idle_down"
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "attack_sword_down"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
-animation = "idle_up"
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "attack_sword_up"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=20]
-blend_point_0/node = SubResource( 16 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=32]
+blend_point_0/node = SubResource( 28 )
 blend_point_0/pos = Vector2( -1.1, 0 )
-blend_point_1/node = SubResource( 17 )
+blend_point_1/node = SubResource( 29 )
 blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 18 )
+blend_point_2/node = SubResource( 30 )
 blend_point_2/pos = Vector2( 0, 1 )
-blend_point_3/node = SubResource( 19 )
+blend_point_3/node = SubResource( 31 )
 blend_point_3/pos = Vector2( 0, -1 )
 min_space = Vector2( -1.1, -1 )
 max_space = Vector2( 1.1, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( -1.1, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 1.1, 0 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( 0, -1 )
+min_space = Vector2( -1.1, -1 )
+max_space = Vector2( 1.1, 1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "walk_left"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "walk_right"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "walk_up"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "walk_down"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=21]
-blend_point_0/node = SubResource( 24 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 25 )
+blend_point_1/node = SubResource( 17 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 26 )
+blend_point_2/node = SubResource( 18 )
 blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 27 )
+blend_point_3/node = SubResource( 19 )
 blend_point_3/pos = Vector2( 0, 1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/idle/node = SubResource( 20 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/attack_sword/node = SubResource( 32 )
+states/attack_sword/position = Vector2( 581, 206.913 )
+states/idle/node = SubResource( 15 )
 states/idle/position = Vector2( 474, 90.9125 )
-states/walk/node = SubResource( 21 )
+states/walk/node = SubResource( 20 )
 states/walk/position = Vector2( 683, 89.9125 )
-transitions = [ "idle", "walk", SubResource( 22 ), "walk", "idle", SubResource( 23 ) ]
+transitions = [ "idle", "walk", SubResource( 21 ), "walk", "idle", SubResource( 22 ), "idle", "attack_sword", SubResource( 33 ), "attack_sword", "idle", SubResource( 34 ), "walk", "attack_sword", SubResource( 35 ) ]
 start_node = "idle"
 graph_offset = Vector2( 0, -20.0875 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [node name="Player" type="Node2D"]
 
@@ -413,8 +705,10 @@ script = ExtResource( 2 )
 move_speed = 160
 
 [node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 1 )
+texture = ExtResource( 10 )
+offset = Vector2( 3, 0 )
 hframes = 6
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 5.03968 )
@@ -422,18 +716,24 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/idle_down = SubResource( 2 )
-anims/idle_left = SubResource( 11 )
-anims/idle_right = SubResource( 3 )
-anims/idle_up = SubResource( 12 )
-anims/walk_down = SubResource( 4 )
-anims/walk_left = SubResource( 14 )
-anims/walk_right = SubResource( 13 )
-anims/walk_up = SubResource( 15 )
+anims/attack_sword_down = SubResource( 2 )
+anims/attack_sword_left = SubResource( 25 )
+anims/attack_sword_right = SubResource( 26 )
+anims/attack_sword_up = SubResource( 27 )
+anims/idle_down = SubResource( 3 )
+anims/idle_left = SubResource( 4 )
+anims/idle_right = SubResource( 5 )
+anims/idle_up = SubResource( 6 )
+anims/walk_down = SubResource( 7 )
+anims/walk_left = SubResource( 8 )
+anims/walk_right = SubResource( 9 )
+anims/walk_up = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Player"]
-tree_root = SubResource( 9 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 10 )
+active = true
+parameters/playback = SubResource( 24 )
+parameters/attack_sword/blend_position = Vector2( -0.163698, 0.0636942 )
 parameters/idle/blend_position = Vector2( 0.318393, 0 )
 parameters/walk/blend_position = Vector2( 0.00309122, -0.698276 )
