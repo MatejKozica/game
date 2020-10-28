@@ -52,6 +52,13 @@ attack={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="enemy_hurtbox;"
+2d_physics/layer_1="enemy_hurtbox"
+2d_render/layer_2="player_hurtbox;"
+2d_physics/layer_2="player_hurtbox"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
