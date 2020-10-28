@@ -46,11 +46,8 @@ func _state_machine() -> void:
 				print("udri");
 		ATTACK:
 			#state
-#			_direction = _get_direction();
+			_direction = _get_direction();
 			animation_state.travel("attack_sword");
-			
-			#checking for other states
-			
 
 func _get_direction() -> Vector2:
 	var direction = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
