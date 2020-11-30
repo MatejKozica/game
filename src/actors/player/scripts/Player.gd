@@ -3,12 +3,16 @@ extends "res://src/actors/actor.gd";
 onready var sprite = $Sprite;
 onready var animation_tree  = $AnimationTree;
 onready var animation_state = animation_tree.get("parameters/playback");
+onready var raycast = $RayCast2D;
 
 enum{
 	IDLE, WALK, SHOOT
 }
 
 var state = IDLE;
+
+func _ready():
+	get_tree().call_group("enemies", "set_player", self);
 
 func _physics_process(delta):
 	_state_machine();
@@ -19,11 +23,10 @@ func _state_machine() -> void:
 	match state:
 		IDLE:
 			#state
-			_velocity.x = 0; 
+			_velocity = Vector2.ZERO;
 			_direction = _get_direction();
 			animation_state.travel("idle");
-			
-			
+				
 			#checking for other states
 			if _direction != Vector2.ZERO:
 				state = WALK;
@@ -42,6 +45,9 @@ func _state_machine() -> void:
 		SHOOT:
 			#state
 			_direction = _get_direction();
+			var target = raycast.get_collider();
+			if raycast.is_colliding() and target.has_method("kill"):
+				target.kill();
 			animation_state.travel("shooting");
 
 func _get_direction() -> Vector2:
@@ -56,3 +62,6 @@ func move(velocity: Vector2, direction: Vector2, speed) -> Vector2:
 
 func set_idle():
 	state = IDLE;
+	
+func kill():
+	get_tree().reload_current_scene();
