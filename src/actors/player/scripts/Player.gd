@@ -4,6 +4,9 @@ onready var sprite = $Sprite;
 onready var animation_tree  = $AnimationTree;
 onready var animation_state = animation_tree.get("parameters/playback");
 onready var raycast = $shooting_raycast;
+onready var screenShake = $Camera2D/ScreenShake;
+onready var fireEffect = $fireEffect;
+onready var trailEffect = $trailEffect;
 
 enum{
 	IDLE, WALK, SHOOT
@@ -45,14 +48,15 @@ func _state_machine() -> void:
 		SHOOT:
 			#state
 			_direction = _get_direction();
+
+			screenShake.start(0.2, 15, 16, 0);
+			animation_state.travel("shooting");
+			fireEffect.emitting = true;
+			trailEffect.emitting = true;
+			
 			var target = raycast.get_collider();
-			
-			$Camera2D/ScreenShake.start(0.2, 15, 16, 0);
-			
 			if raycast.is_colliding() and target.has_method("kill"):
 				target.kill();
-			
-			animation_state.travel("shooting");
 
 func _get_direction() -> Vector2:
 	var direction = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
