@@ -3,7 +3,7 @@ extends "res://src/actors/actor.gd";
 onready var sprite = $Sprite;
 onready var animation_tree  = $AnimationTree;
 onready var animation_state = animation_tree.get("parameters/playback");
-onready var raycast = $RayCast2D;
+onready var raycast = $shooting_raycast;
 
 enum{
 	IDLE, WALK, SHOOT
@@ -46,8 +46,12 @@ func _state_machine() -> void:
 			#state
 			_direction = _get_direction();
 			var target = raycast.get_collider();
+			
+			$Camera2D/ScreenShake.start(0.2, 15, 16, 0);
+			
 			if raycast.is_colliding() and target.has_method("kill"):
 				target.kill();
+			
 			animation_state.travel("shooting");
 
 func _get_direction() -> Vector2:

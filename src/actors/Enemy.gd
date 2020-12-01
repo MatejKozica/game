@@ -13,7 +13,6 @@ func _physics_process(delta):
 		return
 	
 	look_at(player.global_position);
-	print("radi");
 
 func set_player(p):
 	player = p;
