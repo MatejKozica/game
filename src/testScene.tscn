@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/actors/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/actors/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/tileset/tileset.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/player/idle.png" type="Texture" id=4]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -25,9 +24,6 @@ scale = Vector2( 2, 2 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 244.873, 159.277 )
 scale = Vector2( 2, 2 )
-
-[node name="Sprite" parent="Player/Player" index="0"]
-texture = ExtResource( 4 )
 
 [node name="AnimationTree" parent="Player/Player" index="3"]
 parameters/playback = SubResource( 1 )

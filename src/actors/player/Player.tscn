@@ -1,11 +1,11 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/player/idle.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/player/scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/player/shooting.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/gun/gun.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/general/light.png" type="Texture" id=5]
-[ext_resource path="res://src/general/screenShake.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/actors/player/Camera2D.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.93626
@@ -116,20 +116,6 @@ linear_accel = 1.0
 scale_curve = SubResource( 13 )
 color_ramp = SubResource( 11 )
 
-[sub_resource type="Gradient" id=15]
-offsets = PoolRealArray( 0, 0.992593 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=16]
-gradient = SubResource( 15 )
-
-[sub_resource type="ParticlesMaterial" id=17]
-flag_disable_z = true
-gravity = Vector3( 0, 98, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-color_ramp = SubResource( 16 )
-
 [node name="Player" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -170,12 +156,13 @@ energy = 0.4
 shadow_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -100000
-limit_top = -1000000
-limit_right = -100000
-limit_bottom = -10000
-
-[node name="ScreenShake" parent="Player/Camera2D" instance=ExtResource( 6 )]
+position = Vector2( -9.15527e-05, 0 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+script = ExtResource( 6 )
 
 [node name="fireEffect" type="Particles2D" parent="Player"]
 modulate = Color( 0.866667, 0.694118, 0.176471, 1 )
@@ -186,12 +173,3 @@ amount = 10
 lifetime = 0.1
 one_shot = true
 process_material = SubResource( 14 )
-
-[node name="trailEffect" type="Particles2D" parent="Player"]
-position = Vector2( 9.01562, 5.56847 )
-rotation = -1.5708
-emitting = false
-amount = 1
-one_shot = true
-speed_scale = 5.0
-process_material = SubResource( 17 )
