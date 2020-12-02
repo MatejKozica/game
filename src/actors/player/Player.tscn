@@ -52,7 +52,7 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "set_idle"
+"method": "shoot_end"
 } ]
 }
 tracks/2/type = "audio"
@@ -125,7 +125,7 @@ move_speed = 150
 [node name="Sprite" type="Sprite" parent="Player"]
 position = Vector2( -1.50169, 0 )
 rotation = -1.5708
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="player_collision" type="CollisionShape2D" parent="Player"]
 visible = false

@@ -6,6 +6,7 @@ onready var animation_state = animation_tree.get("parameters/playback");
 onready var raycast = $shooting_raycast;
 onready var fireEffect = $fireEffect;
 onready var camera = $Camera2D;
+onready var trace = $traceEffect
 
 enum{
 	IDLE, WALK, SHOOT
@@ -48,13 +49,16 @@ func _state_machine() -> void:
 			#state
 			_direction = _get_direction();
 
-			camera.shake(0.2, 1)
+			camera.shake(0.2, 2)
 			animation_state.travel("shooting");
 			fireEffect.emitting = true;
 			
 			var target = raycast.get_collider();
+			var point = raycast.get_collision_point();
+			
 			if raycast.is_colliding() and target.has_method("kill"):
 				target.kill();
+				
 
 func _get_direction() -> Vector2:
 	var direction = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -66,7 +70,7 @@ func move(velocity: Vector2, direction: Vector2, speed) -> Vector2:
 	velocity = speed * direction.normalized();
 	return velocity;
 
-func set_idle():
+func shoot_end():
 	state = IDLE;
 	
 func kill():
