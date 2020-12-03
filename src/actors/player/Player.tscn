@@ -1,94 +1,13 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/player/idle.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/player/scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/player/shooting.png" type="Texture" id=3]
-[ext_resource path="res://assets/sounds/gun/gun.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/general/light.png" type="Texture" id=5]
 [ext_resource path="res://src/actors/player/Camera2D.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.93626
 height = 8.16575
-
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 1 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "shooting"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "shoot_end"
-} ]
-}
-tracks/2/type = "audio"
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 4 )
-} ],
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "idle"
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "shooting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=6]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
-
-[sub_resource type="AnimationNodeStateMachine" id=8]
-states/idle/node = SubResource( 4 )
-states/idle/position = Vector2( 405, 101 )
-states/shooting/node = SubResource( 5 )
-states/shooting/position = Vector2( 668, 106 )
-transitions = [ "idle", "shooting", SubResource( 6 ), "shooting", "idle", SubResource( 7 ) ]
-start_node = "idle"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0, 0.977778 )
@@ -132,16 +51,6 @@ visible = false
 position = Vector2( -1.00226, 0 )
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/idle = SubResource( 2 )
-anims/shooting = SubResource( 3 )
-
-[node name="AnimationTree" type="AnimationTree" parent="Player"]
-tree_root = SubResource( 8 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 9 )
-
 [node name="shooting_raycast" type="RayCast2D" parent="Player"]
 visible = false
 enabled = true
@@ -150,6 +59,7 @@ cast_to = Vector2( 2000, 0 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
 
 [node name="Light2D" type="Light2D" parent="Player"]
+position = Vector2( 0.0936394, -0.0468225 )
 texture = ExtResource( 5 )
 texture_scale = 5.0
 energy = 0.4

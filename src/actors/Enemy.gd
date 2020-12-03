@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://src/actors/actor.gd"
 
 var player = null;
 
